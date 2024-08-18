@@ -12,4 +12,4 @@ export const updateTask = (taskId, task) =>
 export const deleteTask = (taskId) => api.delete(`${resource}/${taskId}`);
 
 export const completeTask = (taskId, task) =>
-  api.put(`${resource}/${taskId}/complete`, task);
+  api.patch(`${resource}/${taskId}/complete`, task);
