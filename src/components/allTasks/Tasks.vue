@@ -4,9 +4,9 @@
             <Task v-for="task in tasks"  
             :task="task" 
             :key="task.id" 
-            @updated="$emit('updated', $event)"
-                @completed="$emit('completed', $event)"
-                @removed="$emit('removed', $event)"
+            @updated="handleUpdatedTasks"
+                @completed="handleCompletedTasks"
+                @removed="handleRemovedTasks"
             />
         </ul>
     </div>
@@ -14,7 +14,11 @@
 
 <script setup>
 
+import { useTaskStore } from '@/stores/task';
 import Task from './Task.vue';
+
+const store = useTaskStore();
+const { handleUpdatedTasks, handleCompletedTasks, handleRemovedTasks } = store;
 
 defineProps({
     tasks: Array,
